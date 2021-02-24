@@ -26,7 +26,10 @@ class MainViewModel(private val useCase: ForecastUseCase) : BaseViewModel() {
                 )
             },
             onError = {
-                forecast.set(status = Status.ERROR)
+                forecast.set(
+                    status = Status.ERROR,
+                    errorMessage = it.message
+                )
             }
         )
     }
