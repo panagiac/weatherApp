@@ -3,7 +3,7 @@ package com.panagiac.demo.data.mapper
 import com.panagiac.demo.data.network.dto.ForecastDTO
 import com.panagiac.demo.domain.model.Forecast
 
-class ForecastMapper : BaseMapper<ForecastDTO, Forecast>() {
+class ForecastMapper : BaseMapper<ForecastDTO, Forecast> {
     override fun mapFrom(from: ForecastDTO): Forecast {
         return Forecast(
             cnt = from.cnt ?: 0,
