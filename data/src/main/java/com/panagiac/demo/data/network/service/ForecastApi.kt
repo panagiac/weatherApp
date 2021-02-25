@@ -1,7 +1,7 @@
 package com.panagiac.demo.data.network.service
 
 import com.panagiac.demo.data.FORECAST
-import com.panagiac.demo.data.network.dto.ForecastDTO
+import com.panagiac.demo.data.models.ForecastDTO
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query

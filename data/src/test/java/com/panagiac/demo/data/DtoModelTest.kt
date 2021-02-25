@@ -1,6 +1,6 @@
 package com.panagiac.demo.data
 
-import com.panagiac.demo.data.network.dto.ForecastDTO
+import com.panagiac.demo.data.models.ForecastDTO
 import com.panagiac.demo.data.tools.ResourceHelper
 import org.junit.Before
 import org.junit.Test

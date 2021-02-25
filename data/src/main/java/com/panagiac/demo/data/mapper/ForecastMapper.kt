@@ -1,6 +1,6 @@
 package com.panagiac.demo.data.mapper
 
-import com.panagiac.demo.data.network.dto.ForecastDTO
+import com.panagiac.demo.data.models.ForecastDTO
 import com.panagiac.demo.domain.model.Forecast
 
 class ForecastMapper : BaseMapper<ForecastDTO, Forecast> {

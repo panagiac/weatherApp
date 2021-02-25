@@ -1,7 +1,7 @@
 package com.panagiac.demo.data.network.service
 
 import com.panagiac.demo.data.API_MOCK_FILE
-import com.panagiac.demo.data.network.dto.ForecastDTO
+import com.panagiac.demo.data.models.ForecastDTO
 import com.panagiac.demo.data.tools.ResourceHelper
 import io.reactivex.Single
 
