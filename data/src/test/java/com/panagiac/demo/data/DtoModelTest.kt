@@ -1,10 +1,9 @@
 package com.panagiac.demo.data
 
-import com.google.gson.Gson
 import com.panagiac.demo.data.network.dto.ForecastDTO
+import com.panagiac.demo.data.tools.ResourceHelper
 import org.junit.Before
 import org.junit.Test
-import java.io.File
 
 class DtoModelTest {
     companion object {
@@ -15,12 +14,8 @@ class DtoModelTest {
 
     @Before
     fun createDataSource() {
-        val uri = this.javaClass.classLoader?.getResource(FILENAME)
-        uri?.let {
-            val file = File(uri.path)
-            val json = String(file.readBytes())
-
-            forecastDTO = Gson().fromJson(json, ForecastDTO::class.java)
+        ResourceHelper.getFile(FILENAME, ForecastDTO::class.java)?.let {
+            forecastDTO = it
         }
     }
 
