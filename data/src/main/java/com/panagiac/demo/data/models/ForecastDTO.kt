@@ -1,15 +1,15 @@
 package com.panagiac.demo.data.models
 
 data class ForecastDTO(
-    val city: City?,
+    val city: CityDTO?,
     val cnt: Int?,
     val cod: String?,
-    val list: List<Day>?,
+    val list: List<DayDTO>?,
     val message: Int?
 )
 
-data class City(
-    val coord: Coord,
+data class CityDTO(
+    val coord: CoordDTO,
     val country: String,
     val id: Int,
     val name: String,
@@ -19,28 +19,28 @@ data class City(
     val timezone: Int
 )
 
-data class Day(
-    val clouds: Clouds,
+data class DayDTO(
+    val clouds: CloudsDTO,
     val dt: Int,
     val dt_txt: String,
-    val main: Main,
+    val main: MainDTO,
     val pop: Int,
-    val sys: Sys,
+    val sys: SysDTO,
     val visibility: Int,
-    val weather: List<Weather>,
-    val wind: Wind
+    val weather: List<WeatherDTO>,
+    val wind: WindDTO
 )
 
-data class Coord(
+data class CoordDTO(
     val lat: Double,
     val lon: Double
 )
 
-data class Clouds(
+data class CloudsDTO(
     val all: Int
 )
 
-data class Main(
+data class MainDTO(
     val feels_like: Double,
     val grnd_level: Int,
     val humidity: Int,
@@ -52,18 +52,18 @@ data class Main(
     val temp_min: Double
 )
 
-data class Sys(
+data class SysDTO(
     val pod: String
 )
 
-data class Weather(
+data class WeatherDTO(
     val description: String,
     val icon: String,
     val id: Int,
     val main: String
 )
 
-data class Wind(
+data class WindDTO(
     val deg: Int,
     val speed: Double
 )
