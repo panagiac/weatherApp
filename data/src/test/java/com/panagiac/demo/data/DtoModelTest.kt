@@ -6,15 +6,11 @@ import org.junit.Before
 import org.junit.Test
 
 class DtoModelTest {
-    companion object {
-        private const val FILENAME = "api_weather.json"
-    }
-
     private lateinit var forecastDTO: ForecastDTO
 
     @Before
     fun createDataSource() {
-        ResourceHelper.getFile(FILENAME, ForecastDTO::class.java)?.let {
+        ResourceHelper.getFile(API_MOCK_FILE, ForecastDTO::class.java)?.let {
             forecastDTO = it
         }
     }
