@@ -10,7 +10,6 @@ fun AutoCompleteTextView.build(
     onClick: (String) -> Unit
 ): AutoCompleteTextView {
     val autoCompleteTextView = this
-
     setAdapter(
         ArrayAdapter(
             context as Activity,
