@@ -4,12 +4,13 @@ import com.panagiac.demo.data.repository.CityRepositoryImpl
 import com.panagiac.demo.data.repository.ForecastRepositoryImpl
 import com.panagiac.demo.domain.repository.CityRepository
 import com.panagiac.demo.domain.repository.ForecastRepository
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 val repositoryModule = module {
     factory<ForecastRepository> {
         ForecastRepositoryImpl(
-            apiService = get(),
+            apiService = get(named("mock")),
             forecastMapper = get()
         )
     }

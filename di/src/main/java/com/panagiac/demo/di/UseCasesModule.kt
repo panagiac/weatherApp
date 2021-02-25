@@ -5,5 +5,10 @@ import com.panagiac.demo.domain.usecase.ForecastUseCaseImpl
 import org.koin.dsl.module
 
 val useCasesModule = module {
-    factory<ForecastUseCase> { ForecastUseCaseImpl(forecastRepository = get()) }
+    factory<ForecastUseCase> {
+        ForecastUseCaseImpl(
+            forecastRepository = get(),
+            cityRepository = get()
+        )
+    }
 }

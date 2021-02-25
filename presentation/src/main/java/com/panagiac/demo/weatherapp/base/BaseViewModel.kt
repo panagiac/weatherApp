@@ -8,13 +8,13 @@ import io.reactivex.disposables.CompositeDisposable
 open class BaseViewModel : ViewModel() {
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
-    protected fun <T> doApiCall(
-        apiCall: Single<T>,
+    protected fun <T> doAsync(
+        asyncAction: Single<T>,
         onSuccess: (data: T) -> Unit,
         onError: (throwable: Throwable) -> Unit
     ) {
         compositeDisposable.add(
-            apiCall
+            asyncAction
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                     {
