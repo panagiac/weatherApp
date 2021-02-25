@@ -12,6 +12,10 @@ class CityRepositoryImpl(private val mapper: CityMapper) : CityRepository {
     override fun getCities(): Single<List<City>> {
         return Single.fromCallable {
             ResourceHelper.getFile(CITIES_DB, CitiesDAO::class.java)
-        }.map { t -> t?.toList()?.let { mapper.mapFrom(it) } }
+        }.map { t ->
+            t?.toList()?.let {
+                mapper.mapFrom(it)
+            }
+        }
     }
 }
