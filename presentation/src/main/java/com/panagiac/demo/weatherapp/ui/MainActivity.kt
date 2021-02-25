@@ -12,7 +12,6 @@ import com.panagiac.demo.weatherapp.extensions.hide
 import com.panagiac.demo.weatherapp.extensions.show
 import org.koin.android.viewmodel.ext.android.viewModel
 
-
 class MainActivity : AppCompatActivity() {
     companion object {
         private val TAG = MainActivity::class.java.toString()
@@ -20,16 +19,15 @@ class MainActivity : AppCompatActivity() {
 
     private val viewModel: MainViewModel by viewModel()
 
-    private lateinit var autoCompleteTextView: AutoCompleteTextView
     private lateinit var loadingView: View
+    private lateinit var autoCompleteTextView: AutoCompleteTextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        autoCompleteTextView = findViewById(R.id.autoComplete)
-
         loadingView = findViewById(R.id.loading)
+        autoCompleteTextView = findViewById(R.id.autoComplete)
     }
 
     override fun onResume() {
