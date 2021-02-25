@@ -1,7 +1,7 @@
 package com.panagiac.demo.domain.usecase
 
-import com.panagiac.demo.domain.model.City
-import com.panagiac.demo.domain.model.Forecast
+import com.panagiac.demo.domain.model.weather.City
+import com.panagiac.demo.domain.model.weather.Forecast
 import com.panagiac.demo.domain.repository.CityRepository
 import com.panagiac.demo.domain.repository.ForecastRepository
 import io.reactivex.Single

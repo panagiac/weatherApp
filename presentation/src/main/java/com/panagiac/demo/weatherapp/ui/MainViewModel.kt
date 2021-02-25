@@ -2,7 +2,7 @@ package com.panagiac.demo.weatherapp.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.panagiac.demo.domain.model.Forecast
+import com.panagiac.demo.domain.model.weather.Forecast
 import com.panagiac.demo.domain.model.Response
 import com.panagiac.demo.domain.usecase.ForecastUseCase
 import com.panagiac.demo.weatherapp.base.BaseViewModel
@@ -54,7 +54,9 @@ class MainViewModel(private val useCase: ForecastUseCase) : BaseViewModel() {
             asyncAction = useCase.getWeatherByCityName(cityName),
             onSuccess = {
                 forecast.set(
-                    data = it,
+                    data = it.apply {
+                        name = cityName
+                    },
                     status = Status.SUCCESSFUL
                 )
             },

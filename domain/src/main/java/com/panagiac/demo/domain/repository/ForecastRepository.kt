@@ -1,6 +1,6 @@
 package com.panagiac.demo.domain.repository
 
-import com.panagiac.demo.domain.model.Forecast
+import com.panagiac.demo.domain.model.weather.Forecast
 import io.reactivex.Single
 
 interface ForecastRepository {
