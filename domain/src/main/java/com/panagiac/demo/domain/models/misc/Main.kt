@@ -1,4 +1,4 @@
-package com.panagiac.demo.domain.model.weather
+package com.panagiac.demo.domain.models.misc
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

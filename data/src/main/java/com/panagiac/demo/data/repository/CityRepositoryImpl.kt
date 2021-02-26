@@ -1,10 +1,10 @@
 package com.panagiac.demo.data.repository
 
 import com.panagiac.demo.data.CITIES_DB
-import com.panagiac.demo.data.mapper.CityMapper
+import com.panagiac.demo.data.mappers.misc.CityMapper
 import com.panagiac.demo.data.models.CitiesDAO
 import com.panagiac.demo.data.tools.ResourceHelper
-import com.panagiac.demo.domain.model.weather.City
+import com.panagiac.demo.domain.models.misc.City
 import com.panagiac.demo.domain.repository.CityRepository
 import io.reactivex.Single
 

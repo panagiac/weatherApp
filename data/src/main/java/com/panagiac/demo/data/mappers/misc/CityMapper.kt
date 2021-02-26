@@ -1,7 +1,8 @@
-package com.panagiac.demo.data.mapper
+package com.panagiac.demo.data.mappers.misc
 
+import com.panagiac.demo.data.mappers.BaseMapper
 import com.panagiac.demo.data.models.CitiesDAOItem
-import com.panagiac.demo.domain.model.weather.City
+import com.panagiac.demo.domain.models.misc.City
 
 class CityMapper: BaseMapper<CitiesDAOItem, City> {
     override fun mapFrom(from: CitiesDAOItem): City {

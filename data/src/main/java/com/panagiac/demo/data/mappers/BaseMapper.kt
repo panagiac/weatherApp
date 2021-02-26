@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package com.panagiac.demo.data.mapper
+package com.panagiac.demo.data.mappers
 
 import io.reactivex.Single
 

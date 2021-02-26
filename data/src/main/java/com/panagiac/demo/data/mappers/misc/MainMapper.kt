@@ -1,7 +1,8 @@
-package com.panagiac.demo.data.mapper
+package com.panagiac.demo.data.mappers.misc
 
-import com.panagiac.demo.data.models.MainDTO
-import com.panagiac.demo.domain.model.weather.Main
+import com.panagiac.demo.data.mappers.BaseMapper
+import com.panagiac.demo.data.models.misc.MainDTO
+import com.panagiac.demo.domain.models.misc.Main
 
 class MainMapper : BaseMapper<MainDTO, Main> {
     override fun mapFrom(from: MainDTO): Main {

@@ -1,7 +1,8 @@
-package com.panagiac.demo.data.mapper
+package com.panagiac.demo.data.mappers
 
+import com.panagiac.demo.data.mappers.misc.HourMapper
 import com.panagiac.demo.data.models.ForecastDTO
-import com.panagiac.demo.domain.model.weather.Forecast
+import com.panagiac.demo.domain.models.Forecast
 
 class ForecastMapper(private val hourMapper: HourMapper) : BaseMapper<ForecastDTO, Forecast> {
     override fun mapFrom(from: ForecastDTO): Forecast {

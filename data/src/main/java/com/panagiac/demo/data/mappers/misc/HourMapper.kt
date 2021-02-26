@@ -1,11 +1,12 @@
-package com.panagiac.demo.data.mapper
+package com.panagiac.demo.data.mappers.misc
 
-import com.panagiac.demo.data.models.HourDTO
-import com.panagiac.demo.domain.model.weather.Hour
+import com.panagiac.demo.data.mappers.BaseMapper
+import com.panagiac.demo.data.models.misc.HourDTO
+import com.panagiac.demo.domain.models.misc.Hour
 
 class HourMapper(
     private val mainMapper: MainMapper,
-    private val weatherMapper: WeatherMapper
+    private val weatherItemMapper: WeatherItemMapper
 ) : BaseMapper<HourDTO, Hour> {
     override fun mapFrom(from: HourDTO): Hour {
         return Hour(
@@ -14,7 +15,7 @@ class HourMapper(
             main = mainMapper.mapFrom(from.main),
             pop = from.pop,
             visibility = from.visibility,
-            weather = weatherMapper.mapFrom(from.weather)
+            weatherItem = weatherItemMapper.mapFrom(from.weatherItem)
         )
     }
 

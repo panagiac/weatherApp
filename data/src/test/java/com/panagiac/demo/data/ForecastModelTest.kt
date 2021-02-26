@@ -5,12 +5,12 @@ import com.panagiac.demo.data.tools.ResourceHelper
 import org.junit.Before
 import org.junit.Test
 
-class DtoModelTest {
+class ForecastModelTest {
     private lateinit var forecastDTO: ForecastDTO
 
     @Before
     fun createDataSource() {
-        ResourceHelper.getFile(API_MOCK_FILE, ForecastDTO::class.java)?.let {
+        ResourceHelper.getFile(FORECAST_API_MOCK, ForecastDTO::class.java)?.let {
             forecastDTO = it
         }
     }

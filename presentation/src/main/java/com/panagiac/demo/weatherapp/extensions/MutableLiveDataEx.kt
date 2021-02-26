@@ -1,8 +1,8 @@
 package com.panagiac.demo.weatherapp.extensions
 
 import androidx.lifecycle.MutableLiveData
-import com.panagiac.demo.domain.model.Response
-import com.panagiac.demo.domain.model.Response.Companion.Status
+import com.panagiac.demo.domain.models.Response
+import com.panagiac.demo.domain.models.Response.Companion.Status
 
 fun <T> MutableLiveData<Response<T>>.set(
     data: T? = null,

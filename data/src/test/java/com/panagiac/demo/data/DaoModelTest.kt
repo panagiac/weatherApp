@@ -1,8 +1,8 @@
 package com.panagiac.demo.data
 
-import com.panagiac.demo.data.mapper.CityMapper
+import com.panagiac.demo.data.mappers.misc.CityMapper
 import com.panagiac.demo.data.repository.CityRepositoryImpl
-import com.panagiac.demo.domain.model.weather.City
+import com.panagiac.demo.domain.models.misc.City
 import org.junit.Before
 import org.junit.Test
 

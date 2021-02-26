@@ -10,7 +10,8 @@ val repositoryModule = module {
     factory<ForecastRepository> {
         ForecastRepositoryImpl(
             apiService = get(),
-            forecastMapper = get()
+            forecastMapper = get(),
+            weatherMapper = get()
         )
     }
 

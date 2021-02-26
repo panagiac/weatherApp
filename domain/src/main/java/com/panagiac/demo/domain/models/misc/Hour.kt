@@ -1,4 +1,4 @@
-package com.panagiac.demo.domain.model.weather
+package com.panagiac.demo.domain.models.misc
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
@@ -10,5 +10,5 @@ data class Hour(
     val main: Main,
     val pop: Int,
     val visibility: Int,
-    val weather: List<Weather>
+    val weatherItem: List<WeatherItem>
 ) : Parcelable

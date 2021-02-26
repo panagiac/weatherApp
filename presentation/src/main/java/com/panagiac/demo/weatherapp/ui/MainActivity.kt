@@ -5,7 +5,7 @@ import android.util.Log
 import android.view.View
 import android.widget.AutoCompleteTextView
 import androidx.appcompat.app.AppCompatActivity
-import com.panagiac.demo.domain.model.Response.Companion.Status
+import com.panagiac.demo.domain.models.Response.Companion.Status
 import com.panagiac.demo.weatherapp.R
 import com.panagiac.demo.weatherapp.extensions.build
 import com.panagiac.demo.weatherapp.extensions.hide

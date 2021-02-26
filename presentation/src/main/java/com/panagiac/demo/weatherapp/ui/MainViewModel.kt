@@ -2,12 +2,12 @@ package com.panagiac.demo.weatherapp.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.panagiac.demo.domain.model.weather.Forecast
-import com.panagiac.demo.domain.model.Response
+import com.panagiac.demo.domain.models.Forecast
+import com.panagiac.demo.domain.models.Response
 import com.panagiac.demo.domain.usecase.ForecastUseCase
 import com.panagiac.demo.weatherapp.base.BaseViewModel
 import com.panagiac.demo.weatherapp.extensions.set
-import com.panagiac.demo.domain.model.Response.Companion.Status
+import com.panagiac.demo.domain.models.Response.Companion.Status
 
 class MainViewModel(private val useCase: ForecastUseCase) : BaseViewModel() {
     companion object {
