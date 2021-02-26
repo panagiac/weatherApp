@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        viewModel.getForecast().observe(this, {
+        viewModel.getWeather().observe(this, {
             when (it.responseStatus) {
                 Status.SUCCESSFUL -> {
                     Log.d(TAG, "Successful")
@@ -73,6 +73,6 @@ class MainActivity : AppCompatActivity() {
         super.onPause()
 
         viewModel.getCities().removeObservers(this)
-        viewModel.getForecast().removeObservers(this)
+        viewModel.getWeather().removeObservers(this)
     }
 }

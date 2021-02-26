@@ -1,14 +1,22 @@
 package com.panagiac.demo.di
 
-import com.panagiac.demo.domain.usecase.ForecastUseCase
-import com.panagiac.demo.domain.usecase.ForecastUseCaseImpl
+import com.panagiac.demo.domain.usecase.DetailUseCase
+import com.panagiac.demo.domain.usecase.DetailUseCaseImpl
+import com.panagiac.demo.domain.usecase.HomeUseCase
+import com.panagiac.demo.domain.usecase.HomeUseCaseImpl
 import org.koin.dsl.module
 
 val useCasesModule = module {
-    factory<ForecastUseCase> {
-        ForecastUseCaseImpl(
+    factory<HomeUseCase> {
+        HomeUseCaseImpl(
             forecastRepository = get(),
             cityRepository = get()
+        )
+    }
+
+    factory<DetailUseCase> {
+        DetailUseCaseImpl(
+            forecastRepository = get()
         )
     }
 }
