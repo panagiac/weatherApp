@@ -1,19 +1,18 @@
 package com.panagiac.demo.domain.usecase
 
 import com.panagiac.demo.domain.models.misc.City
-import com.panagiac.demo.domain.models.Forecast
 import com.panagiac.demo.domain.models.Weather
 import com.panagiac.demo.domain.repository.CityRepository
-import com.panagiac.demo.domain.repository.ForecastRepository
+import com.panagiac.demo.domain.repository.ApiRepository
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 
 class HomeUseCaseImpl(
-    private val forecastRepository: ForecastRepository,
+    private val apiRepository: ApiRepository,
     private val cityRepository: CityRepository
 ) : HomeUseCase {
     override fun getWeatherByCityName(cityName: String): Single<Weather> {
-        return forecastRepository.getWeather(cityName)
+        return apiRepository.getWeather(cityName)
             .subscribeOn(Schedulers.io())
     }
 

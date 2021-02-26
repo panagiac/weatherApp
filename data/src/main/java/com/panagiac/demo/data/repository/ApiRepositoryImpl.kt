@@ -2,17 +2,17 @@ package com.panagiac.demo.data.repository
 
 import com.panagiac.demo.data.mappers.ForecastMapper
 import com.panagiac.demo.data.mappers.WeatherMapper
-import com.panagiac.demo.data.network.service.ForecastApi
+import com.panagiac.demo.data.network.service.OpenWeatherApi
 import com.panagiac.demo.domain.models.Forecast
 import com.panagiac.demo.domain.models.Weather
-import com.panagiac.demo.domain.repository.ForecastRepository
+import com.panagiac.demo.domain.repository.ApiRepository
 import io.reactivex.Single
 
-class ForecastRepositoryImpl(
-    private val apiService: ForecastApi,
+class ApiRepositoryImpl(
+    private val apiService: OpenWeatherApi,
     private val weatherMapper: WeatherMapper,
     private val forecastMapper: ForecastMapper
-) : ForecastRepository {
+) : ApiRepository {
     override fun getWeather(cityName: String): Single<Weather> {
         return apiService.getWeather(cityName)
             .map { t -> weatherMapper.mapFrom(t) }

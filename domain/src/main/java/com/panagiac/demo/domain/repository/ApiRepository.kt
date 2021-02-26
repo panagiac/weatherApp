@@ -4,7 +4,7 @@ import com.panagiac.demo.domain.models.Forecast
 import com.panagiac.demo.domain.models.Weather
 import io.reactivex.Single
 
-interface ForecastRepository {
+interface ApiRepository {
     fun getWeather(cityName: String): Single<Weather>
     fun getForecast(cityName: String): Single<Forecast>
 }

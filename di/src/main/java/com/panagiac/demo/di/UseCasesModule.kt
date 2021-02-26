@@ -9,14 +9,14 @@ import org.koin.dsl.module
 val useCasesModule = module {
     factory<HomeUseCase> {
         HomeUseCaseImpl(
-            forecastRepository = get(),
+            apiRepository = get(),
             cityRepository = get()
         )
     }
 
     factory<DetailUseCase> {
         DetailUseCaseImpl(
-            forecastRepository = get()
+            apiRepository = get()
         )
     }
 }

@@ -7,7 +7,7 @@ import com.panagiac.demo.data.models.WeatherDTO
 import com.panagiac.demo.data.tools.ResourceHelper
 import io.reactivex.Single
 
-class MockApi : ForecastApi {
+class MockApi : OpenWeatherApi {
     override fun getWeather(q: String): Single<WeatherDTO> {
         return Single.fromCallable {
             ResourceHelper.getFile(WEATHER_API_MOCK, WeatherDTO::class.java)

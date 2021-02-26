@@ -6,6 +6,10 @@ import org.junit.Before
 import org.junit.Test
 
 class WeatherModelTest {
+    companion object {
+        private const val CITY = "London"
+    }
+
     private var weatherDTO: WeatherDTO? = null
 
     @Before
@@ -16,7 +20,7 @@ class WeatherModelTest {
     }
 
     @Test
-    fun isWeatherModelOk() {
-        assert(weatherDTO != null)
+    fun isOk() {
+        assert(weatherDTO?.name == CITY)
     }
 }

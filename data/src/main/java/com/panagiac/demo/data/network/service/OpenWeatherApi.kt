@@ -8,7 +8,7 @@ import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface ForecastApi {
+interface OpenWeatherApi {
     @GET(WEATHER)
     fun getWeather(@Query("q") q: String): Single<WeatherDTO>
 
