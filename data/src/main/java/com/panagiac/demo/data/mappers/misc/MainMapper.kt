@@ -7,15 +7,15 @@ import com.panagiac.demo.domain.models.misc.Main
 class MainMapper : BaseMapper<MainDTO, Main> {
     override fun mapFrom(from: MainDTO): Main {
         return Main(
-            feelsLike = from.feels_like,
-            grndLevel = from.grnd_level,
-            humidity = from.humidity,
-            pressure = from.pressure,
-            seaLevel = from.sea_level,
-            temp = from.temp,
-            tempKf = from.temp_kf,
-            tempMax = from.temp_max,
-            tempMin = from.temp_min
+            feelsLike = from.feels_like ?: 0.0,
+            grndLevel = from.grnd_level ?: 0,
+            humidity = from.humidity ?: 0,
+            pressure = from.pressure ?: 0,
+            seaLevel = from.sea_level ?: 0,
+            temp = from.temp ?: 0.0,
+            tempKf = from.temp_kf ?: 0.0,
+            tempMax = from.temp_max ?: 0.0,
+            tempMin = from.temp_min ?: 0.0
         )
     }
 

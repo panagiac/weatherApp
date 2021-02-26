@@ -7,8 +7,8 @@ import com.panagiac.demo.domain.models.misc.Wind
 class WindMapper : BaseMapper<WindDTO, Wind> {
     override fun mapFrom(from: WindDTO): Wind {
         return Wind(
-            deg = from.deg,
-            speed = from.speed
+            deg = from.deg ?: 0,
+            speed = from.speed ?: 0.0
         )
     }
 

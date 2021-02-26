@@ -7,8 +7,8 @@ import com.panagiac.demo.domain.models.misc.Coord
 class CoordsMapper : BaseMapper<CoordDTO, Coord> {
     override fun mapFrom(from: CoordDTO): Coord {
         return Coord(
-            lat = from.lat,
-            lon = from.lon
+            lat = from.lat ?: 0.0,
+            lon = from.lon ?: 0.0
         )
     }
 

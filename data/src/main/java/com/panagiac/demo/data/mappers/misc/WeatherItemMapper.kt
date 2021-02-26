@@ -7,10 +7,10 @@ import com.panagiac.demo.domain.models.misc.WeatherItem
 class WeatherItemMapper : BaseMapper<WeatherItemDTO, WeatherItem> {
     override fun mapFrom(from: WeatherItemDTO): WeatherItem {
         return WeatherItem(
-            description = from.description,
-            icon = from.icon,
-            id = from.id,
-            main = from.main
+            description = from.description.toString(),
+            icon = from.icon.toString(),
+            id = from.id ?: 0,
+            main = from.main.toString()
         )
     }
 

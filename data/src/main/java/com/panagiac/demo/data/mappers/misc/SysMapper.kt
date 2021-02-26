@@ -7,7 +7,7 @@ import com.panagiac.demo.domain.models.misc.Sys
 class SysMapper : BaseMapper<SysDTO, Sys> {
     override fun mapFrom(from: SysDTO): Sys {
         return Sys(
-            pod = from.pod
+            pod = from.pod.toString()
         )
     }
 

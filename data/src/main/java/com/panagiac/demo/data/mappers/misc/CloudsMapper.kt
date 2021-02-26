@@ -7,7 +7,7 @@ import com.panagiac.demo.domain.models.misc.Clouds
 class CloudsMapper : BaseMapper<CloudsDTO, Clouds> {
     override fun mapFrom(from: CloudsDTO): Clouds {
         return Clouds(
-            all = from.all
+            all = from.all ?: 0
         )
     }
 
