@@ -10,8 +10,7 @@ class ForecastMapper(private val hourMapper: HourMapper) : BaseMapper<ForecastDT
             cnt = from.cnt ?: 0,
             cod = from.cod.toString(),
             message = from.message ?: 0,
-            list = from.list?.let { hourMapper.mapFrom(it) } ?: listOf(),
-            name = ""
+            list = from.list?.let { hourMapper.mapFrom(it) } ?: listOf()
         )
     }
 
