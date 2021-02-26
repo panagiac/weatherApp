@@ -8,6 +8,6 @@ data class Forecast(
     val cnt: Int,
     val cod: String,
     val message: Int,
-    val list: List<Day>,
+    val list: List<Hour>,
     var name: String
 ) : Parcelable

@@ -4,7 +4,7 @@ data class ForecastDTO(
     val city: CityDTO?,
     val cnt: Int?,
     val cod: String?,
-    val list: List<DayDTO>?,
+    val list: List<HourDTO>?,
     val message: Int?
 )
 
@@ -19,7 +19,7 @@ data class CityDTO(
     val timezone: Int
 )
 
-data class DayDTO(
+data class HourDTO(
     val clouds: CloudsDTO,
     val dt: Int,
     val dt_txt: String,

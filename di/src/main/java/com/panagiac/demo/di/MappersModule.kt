@@ -6,7 +6,7 @@ import org.koin.dsl.module
 val mappersModule = module {
     factory { MainMapper() }
     factory { WeatherMapper() }
-    factory { DayMapper(mainMapper = get(), weatherMapper = get()) }
-    factory { ForecastMapper(dayMapper = get()) }
+    factory { HourMapper(mainMapper = get(), weatherMapper = get()) }
+    factory { ForecastMapper(hourMapper = get()) }
     factory { CityMapper() }
 }
