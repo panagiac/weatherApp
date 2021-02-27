@@ -20,6 +20,9 @@ class HomeViewModel(private val useCase: HomeUseCase) : BaseViewModel() {
     private val weather = MutableLiveData<Response<Weather>>()
     fun getWeather(): LiveData<Response<Weather>> = weather
 
+    var selectedCity: String? = null
+        private set
+
     init {
         populateCities()
     }
@@ -53,12 +56,16 @@ class HomeViewModel(private val useCase: HomeUseCase) : BaseViewModel() {
         doAsync(
             asyncAction = useCase.getWeatherByCityName(cityName),
             onSuccess = {
+                selectedCity = it.name
+
                 weather.set(
                     data = it,
                     status = Status.SUCCESSFUL
                 )
             },
             onError = {
+                selectedCity = ""
+
                 weather.set(
                     status = Status.ERROR,
                     errorMessage = it.message

@@ -1,17 +1,18 @@
 package com.panagiac.demo.weatherapp.ui.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AutoCompleteTextView
 import androidx.fragment.app.Fragment
-import com.panagiac.demo.domain.models.Response
+import com.panagiac.demo.domain.models.Response.Companion.Status
 import com.panagiac.demo.weatherapp.R
 import com.panagiac.demo.weatherapp.extensions.build
 import com.panagiac.demo.weatherapp.extensions.hide
+import com.panagiac.demo.weatherapp.extensions.navigate
 import com.panagiac.demo.weatherapp.extensions.show
+import com.panagiac.demo.weatherapp.ui.detail.DetailFragment
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
@@ -24,8 +25,11 @@ class HomeFragment : Fragment() {
 
     private val viewModel: HomeViewModel by viewModel()
 
-    private lateinit var loadingView: View
-    private lateinit var autoCompleteTextView: AutoCompleteTextView
+    private lateinit var resultView: View
+    private lateinit var resultLoadingView: View
+
+    private lateinit var autoCompleteView: AutoCompleteTextView
+    private lateinit var autoCompleteLoadingView: View
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,8 +37,16 @@ class HomeFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-        loadingView = view.findViewById(R.id.loading)
-        autoCompleteTextView = view.findViewById(R.id.autoComplete)
+        resultView = view.findViewById(R.id.result)
+        resultView.setOnClickListener {
+            viewModel.selectedCity?.let {
+                activity?.navigate(DetailFragment.newInstance(it))
+            }
+        }
+        resultLoadingView = view.findViewById(R.id.resultLoading)
+
+        autoCompleteView = view.findViewById(R.id.autoComplete)
+        autoCompleteLoadingView = view.findViewById(R.id.autoCompleteLoading)
 
         return view
     }
@@ -44,35 +56,42 @@ class HomeFragment : Fragment() {
 
         viewModel.getCities().observe(viewLifecycleOwner, { it ->
             when (it.responseStatus) {
-                Response.Companion.Status.SUCCESSFUL -> {
+                Status.SUCCESSFUL -> {
                     it.data?.let { cityList ->
-                        autoCompleteTextView.build(cityList) {
+                        autoCompleteView.build(cityList) {
                             viewModel.weather(it)
                         }
-                        loadingView.hide()
+                        autoCompleteLoadingView.hide()
+                        resultLoadingView.hide()
                     }
                 }
-                Response.Companion.Status.ERROR -> {
-                    loadingView.hide()
+                Status.ERROR -> {
+                    autoCompleteLoadingView.show()
+                    resultLoadingView.hide()
                 }
-                Response.Companion.Status.LOADING -> {
-                    loadingView.show()
+                Status.LOADING -> {
+                    autoCompleteLoadingView.show()
+                    resultLoadingView.show()
                 }
             }
         })
 
         viewModel.getWeather().observe(viewLifecycleOwner, {
             when (it.responseStatus) {
-                Response.Companion.Status.SUCCESSFUL -> {
-                    Log.d(TAG, "Successful")
-
-                    loadingView.hide()
+                Status.SUCCESSFUL -> {
+                    resultView.show()
+                    resultLoadingView.hide()
+                    autoCompleteLoadingView.hide()
                 }
-                Response.Companion.Status.ERROR -> {
-                    loadingView.hide()
+                Status.ERROR -> {
+                    resultView.show()
+                    resultLoadingView.hide()
+                    autoCompleteLoadingView.hide()
                 }
-                Response.Companion.Status.LOADING -> {
-                    loadingView.show()
+                Status.LOADING -> {
+                    resultView.hide()
+                    resultLoadingView.show()
+                    autoCompleteLoadingView.show()
                 }
             }
         })
@@ -81,7 +100,7 @@ class HomeFragment : Fragment() {
     override fun onPause() {
         super.onPause()
 
-        viewModel.getCities().removeObservers(this)
-        viewModel.getWeather().removeObservers(this)
+        viewModel.getCities().removeObservers(viewLifecycleOwner)
+        viewModel.getWeather().removeObservers(viewLifecycleOwner)
     }
 }
