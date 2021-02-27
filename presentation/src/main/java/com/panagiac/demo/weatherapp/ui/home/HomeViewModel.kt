@@ -1,4 +1,4 @@
-package com.panagiac.demo.weatherapp.ui
+package com.panagiac.demo.weatherapp.ui.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,7 +9,7 @@ import com.panagiac.demo.weatherapp.extensions.set
 import com.panagiac.demo.domain.models.Response.Companion.Status
 import com.panagiac.demo.domain.models.Weather
 
-class MainViewModel(private val useCase: HomeUseCase) : BaseViewModel() {
+class HomeViewModel(private val useCase: HomeUseCase) : BaseViewModel() {
     companion object {
         private const val COUNTRY = "IT"
     }

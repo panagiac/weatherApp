@@ -7,7 +7,8 @@ import com.panagiac.demo.di.mappersModule
 import com.panagiac.demo.di.networkModule
 import com.panagiac.demo.di.repositoryModule
 import com.panagiac.demo.di.useCasesModule
-import com.panagiac.demo.weatherapp.ui.MainViewModel
+import com.panagiac.demo.weatherapp.ui.detail.DetailViewModel
+import com.panagiac.demo.weatherapp.ui.home.HomeViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
@@ -27,7 +28,8 @@ class App : Application() {
                 repositoryModule,
                 useCasesModule,
                 module {
-                    viewModel { MainViewModel(useCase = get()) }
+                    viewModel { HomeViewModel(useCase = get()) }
+                    viewModel { DetailViewModel(useCase = get()) }
                 }
             )
         }
