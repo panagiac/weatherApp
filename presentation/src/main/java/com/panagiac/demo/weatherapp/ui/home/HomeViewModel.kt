@@ -8,6 +8,7 @@ import com.panagiac.demo.weatherapp.base.BaseViewModel
 import com.panagiac.demo.weatherapp.extensions.set
 import com.panagiac.demo.domain.models.Response.Companion.Status
 import com.panagiac.demo.domain.models.Weather
+import com.panagiac.demo.domain.models.misc.City
 
 class HomeViewModel(private val useCase: HomeUseCase) : BaseViewModel() {
     companion object {
@@ -20,7 +21,7 @@ class HomeViewModel(private val useCase: HomeUseCase) : BaseViewModel() {
     private val weather = MutableLiveData<Response<Weather>>()
     fun getWeather(): LiveData<Response<Weather>> = weather
 
-    var selectedCity: String? = null
+    var selectedWeather: Weather? = null
         private set
 
     init {
@@ -56,7 +57,7 @@ class HomeViewModel(private val useCase: HomeUseCase) : BaseViewModel() {
         doAsync(
             asyncAction = useCase.getWeatherByCityName(cityName),
             onSuccess = {
-                selectedCity = it.name
+                selectedWeather = it
 
                 weather.set(
                     data = it,
@@ -64,7 +65,7 @@ class HomeViewModel(private val useCase: HomeUseCase) : BaseViewModel() {
                 )
             },
             onError = {
-                selectedCity = ""
+                selectedWeather = null
 
                 weather.set(
                     status = Status.ERROR,

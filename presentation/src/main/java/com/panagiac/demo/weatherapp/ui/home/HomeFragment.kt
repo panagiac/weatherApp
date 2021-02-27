@@ -39,7 +39,7 @@ class HomeFragment : Fragment() {
 
         resultView = view.findViewById(R.id.result)
         resultView.setOnClickListener {
-            viewModel.selectedCity?.let {
+            viewModel.selectedWeather?.let {
                 activity?.navigate(DetailFragment.newInstance(it))
             }
         }

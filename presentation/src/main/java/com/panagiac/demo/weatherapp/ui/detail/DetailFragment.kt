@@ -5,18 +5,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.panagiac.demo.domain.models.Weather
 import com.panagiac.demo.weatherapp.R
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class DetailFragment : Fragment() {
     companion object {
         private val TAG = DetailFragment::class.java.toString()
-        private const val KEY = "CITY"
+        private const val KEY = "WEATHER"
 
         @JvmStatic
-        fun newInstance(cityName: String) = DetailFragment().apply {
+        fun newInstance(weather: Weather) = DetailFragment().apply {
             arguments = Bundle().apply {
-                putString(KEY, cityName)
+                putParcelable(KEY, weather)
             }
         }
     }
@@ -27,8 +28,10 @@ class DetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val cityName = arguments?.getString(KEY, "")
-        cityName?.let { viewModel.forecast(it) }
+        arguments?.let { safeArguments ->
+            val weather = safeArguments.getParcelable<Weather>(KEY)
+            weather?.let { viewModel.forecast(it.name) }
+        }
 
         return inflater.inflate(R.layout.fragment_detail, container, false)
     }
