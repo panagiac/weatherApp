@@ -19,10 +19,10 @@ class HourMapper(
                 0,
                 0,
                 0,
-                0.0,
-                0.0,
-                0.0,
-                0.0
+                0,
+                0,
+                0,
+                0
             ),
             pop = from.pop ?: 0,
             visibility = from.visibility ?: 0,

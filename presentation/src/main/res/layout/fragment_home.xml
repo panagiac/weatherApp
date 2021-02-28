@@ -18,7 +18,8 @@
         android:singleLine="true"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Orvieto" />
 
     <View
         android:id="@+id/autoCompleteLoading"
@@ -33,16 +34,17 @@
         app:layout_constraintRight_toRightOf="@id/autoComplete"
         app:layout_constraintTop_toTopOf="@id/autoComplete" />
 
-    <androidx.cardview.widget.CardView
+    <include
         android:id="@+id/result"
+        layout="@layout/item_home"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/autoComplete" />
+        app:layout_constraintTop_toBottomOf="@id/autoComplete"
+        tools:visibility="visible" />
 
     <FrameLayout
         android:id="@+id/resultLoading"

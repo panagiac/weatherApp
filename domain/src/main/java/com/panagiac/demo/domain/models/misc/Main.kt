@@ -10,8 +10,8 @@ data class Main(
     val humidity: Int,
     val pressure: Int,
     val seaLevel: Int,
-    val temp: Double,
-    val tempKf: Double,
-    val tempMax: Double,
-    val tempMin: Double
+    val temp: Int,
+    val tempKf: Int,
+    val tempMax: Int,
+    val tempMin: Int
 ): Parcelable

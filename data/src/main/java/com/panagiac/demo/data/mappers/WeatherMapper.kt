@@ -27,10 +27,10 @@ class WeatherMapper(
                 0,
                 0,
                 0,
-                0.0,
-                0.0,
-                0.0,
-                0.0
+                0,
+                0,
+                0,
+                0
             ),
             name = from.name.toString(),
             sys = from.sys?.let { sysMapper.mapFrom(it) } ?: Sys(""),

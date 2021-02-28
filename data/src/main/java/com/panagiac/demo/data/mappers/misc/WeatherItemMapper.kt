@@ -8,7 +8,7 @@ class WeatherItemMapper : BaseMapper<WeatherItemDTO, WeatherItem> {
     override fun mapFrom(from: WeatherItemDTO): WeatherItem {
         return WeatherItem(
             description = from.description.toString(),
-            icon = from.icon?.let { "https://openweathermap.org/img/w/$it.png" } ?: "",
+            icon = from.icon?.let { "https://openweathermap.org/img/wn/$it@2x.png" } ?: "",
             id = from.id ?: 0,
             main = from.main.toString()
         )

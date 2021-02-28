@@ -5,13 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AutoCompleteTextView
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.panagiac.demo.domain.models.Response.Companion.Status
+import com.panagiac.demo.domain.models.Weather
 import com.panagiac.demo.weatherapp.R
-import com.panagiac.demo.weatherapp.extensions.build
-import com.panagiac.demo.weatherapp.extensions.hide
-import com.panagiac.demo.weatherapp.extensions.navigate
-import com.panagiac.demo.weatherapp.extensions.show
+import com.panagiac.demo.weatherapp.extensions.*
 import com.panagiac.demo.weatherapp.ui.detail.DetailFragment
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -79,9 +79,12 @@ class HomeFragment : Fragment() {
         viewModel.getWeather().observe(viewLifecycleOwner, {
             when (it.responseStatus) {
                 Status.SUCCESSFUL -> {
-                    resultView.show()
-                    resultLoadingView.hide()
-                    autoCompleteLoadingView.hide()
+                    it.data?.let { weather ->
+                        loadResult(weather)
+
+                        resultLoadingView.hide()
+                        autoCompleteLoadingView.hide()
+                    }
                 }
                 Status.ERROR -> {
                     resultView.show()
@@ -95,6 +98,22 @@ class HomeFragment : Fragment() {
                 }
             }
         })
+    }
+
+    private fun loadResult(weather: Weather) {
+        this.view?.findViewById<ImageView>(R.id.weatherIcon)?.loadImage(weather.weather[0].icon)
+        this.view?.findViewById<TextView>(R.id.cityName)?.text = weather.name
+        this.view?.findViewById<TextView>(R.id.main)?.text = weather.weather[0].main
+        this.view?.findViewById<TextView>(R.id.description)?.text = weather.weather[0].description
+
+        this.view?.findViewById<TextView>(R.id.temp)?.text =
+            getString(R.string.temperature, weather.main.temp)
+        this.view?.findViewById<TextView>(R.id.tempMin)?.text =
+            getString(R.string.tempMin, weather.main.tempMin)
+        this.view?.findViewById<TextView>(R.id.tempMax)?.text =
+            getString(R.string.tempMax, weather.main.tempMax)
+
+        resultView.show()
     }
 
     override fun onPause() {
