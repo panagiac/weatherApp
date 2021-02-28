@@ -1,5 +1,7 @@
 package com.panagiac.demo.data.mappers.misc
 
+import com.panagiac.demo.data.extensions.toDate
+import com.panagiac.demo.data.extensions.toReadableDate
 import com.panagiac.demo.data.mappers.BaseMapper
 import com.panagiac.demo.data.models.misc.HourDTO
 import com.panagiac.demo.domain.models.misc.Hour
@@ -12,7 +14,7 @@ class HourMapper(
     override fun mapFrom(from: HourDTO): Hour {
         return Hour(
             dt = from.dt ?: 0,
-            dtText = from.dt_txt.toString(),
+            dtText = from.dt_txt?.toDate()?.toReadableDate() ?: "",
             main = from.main?.let { mainMapper.mapFrom(it) } ?: Main(
                 0.0,
                 0,

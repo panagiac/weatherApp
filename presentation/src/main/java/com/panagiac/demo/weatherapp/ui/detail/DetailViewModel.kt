@@ -11,26 +11,39 @@ import com.panagiac.demo.weatherapp.extensions.set
 
 class DetailViewModel(private val useCase: DetailUseCase) : BaseViewModel() {
 
+    private var cachedForecast: Forecast? = null
+
     private val forecast = MutableLiveData<Response<Forecast>>()
     fun getForecast(): LiveData<Response<Forecast>> = forecast
 
     fun forecast(cityName: String) {
         forecast.set(status = Status.LOADING)
 
-        doAsync(
-            asyncAction = useCase.getForecastByCityName(cityName),
-            onSuccess = {
+        when {
+            (cachedForecast != null) -> {
                 forecast.set(
-                    data = it,
+                    data = cachedForecast,
                     status = Status.SUCCESSFUL
                 )
-            },
-            onError = {
-                forecast.set(
-                    status = Status.ERROR,
-                    errorMessage = it.message
+            }
+            else -> {
+                doAsync(
+                    asyncAction = useCase.getForecastByCityName(cityName),
+                    onSuccess = {
+                        cachedForecast = it
+                        forecast.set(
+                            data = it,
+                            status = Status.SUCCESSFUL
+                        )
+                    },
+                    onError = {
+                        forecast.set(
+                            status = Status.ERROR,
+                            errorMessage = it.message
+                        )
+                    }
                 )
             }
-        )
+        }
     }
 }

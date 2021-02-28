@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.panagiac.demo.domain.models.Response.Companion.Status
 import com.panagiac.demo.domain.models.Weather
 import com.panagiac.demo.weatherapp.R
@@ -27,6 +29,7 @@ class DetailFragment : Fragment() {
 
     private val viewModel: DetailViewModel by viewModel()
     private lateinit var loading: View
+    private lateinit var detailAdapter: DetailAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,6 +43,16 @@ class DetailFragment : Fragment() {
         val layout = inflater.inflate(R.layout.fragment_detail, container, false)
 
         loading = layout.rootView.findViewById(R.id.loading)
+        detailAdapter = DetailAdapter()
+
+        layout.rootView.findViewById<RecyclerView>(R.id.recyclerView).apply {
+            setHasFixedSize(true)
+
+            layoutManager = LinearLayoutManager(context)
+            adapter = detailAdapter.apply {
+                setHasStableIds(true)
+            }
+        }
 
         return layout
     }
@@ -50,6 +63,7 @@ class DetailFragment : Fragment() {
         viewModel.getForecast().observe(viewLifecycleOwner, {
             when (it.responseStatus) {
                 Status.SUCCESSFUL -> {
+                    it.data?.let { forecast -> detailAdapter.addForecast(forecast) }
                     loading.hide()
                 }
                 Status.ERROR -> {
