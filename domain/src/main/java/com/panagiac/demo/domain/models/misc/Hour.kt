@@ -8,7 +8,7 @@ data class Hour(
     val dt: Int,
     val dtText: String,
     val main: Main,
-    val pop: Int,
+    val pop: Double,
     val visibility: Int,
-    val weatherItem: List<WeatherItem>
+    val weather: List<WeatherItem>
 ) : Parcelable

@@ -5,9 +5,9 @@ data class HourDTO(
     val dt: Int?,
     val dt_txt: String?,
     val main: MainDTO?,
-    val pop: Int?,
+    val pop: Double?,
     val sys: SysDTO?,
     val visibility: Int?,
-    val weatherItem: List<WeatherItemDTO>?,
+    val weather: List<WeatherItemDTO>?,
     val wind: WindDTO?
 )
