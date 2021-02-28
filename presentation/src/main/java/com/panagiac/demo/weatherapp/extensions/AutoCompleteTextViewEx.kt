@@ -10,15 +10,17 @@ fun AutoCompleteTextView.build(
     onClick: (String) -> Unit
 ): AutoCompleteTextView {
     val autoCompleteTextView = this
+    val activity = context as Activity
     setAdapter(
         ArrayAdapter(
-            context as Activity,
+            activity,
             android.R.layout.simple_list_item_1,
             list
         ).apply {
             onItemClickListener =
                 AdapterView.OnItemClickListener { parent, _, position, _ ->
                     val item = parent.getItemAtPosition(position)
+                    activity.hideKeyboard()
                     autoCompleteTextView.clearFocus()
 
                     delay({ onClick.invoke(item as String) })

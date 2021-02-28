@@ -60,7 +60,6 @@ class HomeFragment : Fragment() {
                 Status.SUCCESSFUL -> {
                     it.data?.let { cityList ->
                         autoCompleteView.build(cityList) {
-                            activity?.hideKeyboard()
                             viewModel.weather(it)
                         }
                         autoCompleteLoadingView.hide()
