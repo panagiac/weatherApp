@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.panagiac.demo.domain.models.Response.Companion.Status
@@ -35,12 +36,15 @@ class DetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val layout = inflater.inflate(R.layout.fragment_detail, container, false)
+
         arguments?.let { safeArguments ->
             val weather = safeArguments.getParcelable<Weather>(KEY)
-            weather?.let { viewModel.forecast(it.name) }
+            weather?.let {
+                layout.findViewById<TextView>(R.id.cityName)?.text = weather.name
+                viewModel.forecast(it.name)
+            }
         }
-
-        val layout = inflater.inflate(R.layout.fragment_detail, container, false)
 
         loading = layout.rootView.findViewById(R.id.loading)
         detailAdapter = DetailAdapter()
