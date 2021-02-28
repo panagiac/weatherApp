@@ -27,6 +27,7 @@
             android:layout_toEndOf="@id/weatherIcon"
             android:maxLines="2"
             android:textAlignment="viewEnd"
+            android:textColor="@color/black"
             android:textSize="18sp"
             tools:text="Torino" />
 
@@ -40,6 +41,7 @@
             android:layout_toEndOf="@id/weatherIcon"
             android:maxLines="2"
             android:textAlignment="viewEnd"
+            android:textColor="@color/black"
             android:textSize="19sp"
             android:textStyle="bold"
             tools:text="Drizzle" />
@@ -53,6 +55,7 @@
             android:layout_toEndOf="@id/weatherIcon"
             android:maxLines="2"
             android:textAlignment="viewEnd"
+            android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="italic"
             tools:text="light intensity drizzle" />
@@ -78,6 +81,7 @@
             android:layout_alignEnd="@id/weatherIcon"
             android:maxLines="1"
             android:textAlignment="center"
+            android:textColor="@color/black"
             android:textSize="25sp"
             android:textStyle="bold"
             tools:text="20°" />
@@ -92,6 +96,7 @@
             android:layout_alignParentStart="true"
             android:maxLines="1"
             android:textAlignment="center"
+            android:textColor="@color/black"
             android:textSize="15sp"
             android:textStyle="bold"
             tools:text="Min: 18°" />
@@ -104,6 +109,7 @@
             android:layout_alignParentStart="true"
             android:maxLines="1"
             android:textAlignment="center"
+            android:textColor="@color/black"
             android:textSize="15sp"
             android:textStyle="bold"
             tools:text="Max: 22°" />
