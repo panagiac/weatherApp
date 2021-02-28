@@ -19,4 +19,10 @@ class MainActivity : AppCompatActivity() {
             replace(HomeFragment.newInstance())
         }
     }
+
+    override fun onBackPressed() {
+        if (!supportFragmentManager.popBackStackImmediate()) {
+            finishAfterTransition()
+        }
+    }
 }
