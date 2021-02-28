@@ -8,6 +8,7 @@ import com.panagiac.demo.weatherapp.ui.home.HomeFragment
 
 class MainActivity : AppCompatActivity() {
     companion object {
+        @Suppress("unused")
         private val TAG = MainActivity::class.java.toString()
     }
 

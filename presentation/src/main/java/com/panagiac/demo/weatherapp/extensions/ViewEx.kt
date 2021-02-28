@@ -1,10 +1,8 @@
 package com.panagiac.demo.weatherapp.extensions
 
-import android.app.Activity
 import android.os.Handler
 import android.os.Looper
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 
 fun delay(function: () -> Unit, delay: Long = 500L) {
     Looper.myLooper()?.let {

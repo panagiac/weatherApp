@@ -17,6 +17,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
     companion object {
+        @Suppress("unused")
         private val TAG = HomeFragment::class.java.toString()
 
         @JvmStatic

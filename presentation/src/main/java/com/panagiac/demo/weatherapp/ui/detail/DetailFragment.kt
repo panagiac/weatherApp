@@ -17,7 +17,9 @@ import org.koin.android.viewmodel.ext.android.viewModel
 
 class DetailFragment : Fragment() {
     companion object {
+        @Suppress("unused")
         private val TAG = DetailFragment::class.java.toString()
+
         private const val KEY = "WEATHER"
 
         @JvmStatic
