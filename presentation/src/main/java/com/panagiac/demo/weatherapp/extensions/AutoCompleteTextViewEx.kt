@@ -20,7 +20,6 @@ fun AutoCompleteTextView.build(
                 AdapterView.OnItemClickListener { parent, _, position, _ ->
                     val item = parent.getItemAtPosition(position)
                     autoCompleteTextView.clearFocus()
-                    autoCompleteTextView.hideKeyboard()
 
                     delay({ onClick.invoke(item as String) })
                 }

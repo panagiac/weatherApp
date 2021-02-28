@@ -21,10 +21,3 @@ fun View.show() {
 fun View.hide(delay: Long = 0) {
     delay({ this.visibility = View.GONE }, delay)
 }
-
-fun View.hideKeyboard() {
-    (this.context as? Activity)?.let {
-        val imm = it.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(it.currentFocus?.windowToken, 0)
-    }
-}
