@@ -13,6 +13,7 @@ import com.panagiac.demo.domain.models.Weather
 import com.panagiac.demo.weatherapp.R
 import com.panagiac.demo.weatherapp.extensions.hide
 import com.panagiac.demo.weatherapp.extensions.show
+import com.panagiac.demo.weatherapp.extensions.toast
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class DetailFragment : Fragment() {
@@ -73,6 +74,8 @@ class DetailFragment : Fragment() {
                     loading.hide()
                 }
                 Status.ERROR -> {
+                    it.errorMessage?.let { message -> activity?.toast(message) }
+
                     loading.hide()
                 }
                 Status.LOADING -> {

@@ -67,6 +67,8 @@ class HomeFragment : Fragment() {
                     }
                 }
                 Status.ERROR -> {
+                    it.errorMessage?.let { message -> activity?.toast(message) }
+
                     autoCompleteLoadingView.show()
                     resultLoadingView.hide()
                 }
@@ -88,7 +90,9 @@ class HomeFragment : Fragment() {
                     }
                 }
                 Status.ERROR -> {
-                    resultView.show()
+                    it.errorMessage?.let { message -> activity?.toast(message) }
+
+                    resultView.hide()
                     resultLoadingView.hide()
                     autoCompleteLoadingView.hide()
                 }
