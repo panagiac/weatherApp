@@ -12,6 +12,7 @@ import com.panagiac.demo.domain.models.Forecast
 import com.panagiac.demo.domain.models.misc.Hour
 import com.panagiac.demo.weatherapp.R
 import com.panagiac.demo.weatherapp.extensions.loadImage
+import com.panagiac.demo.weatherapp.extensions.safeGet
 import org.koin.core.KoinComponent
 import org.koin.core.get
 
@@ -46,7 +47,7 @@ class DetailAdapter : RecyclerView.Adapter<DetailAdapter.ViewHolder>(), KoinComp
         viewHolder.date.text = hour.dtText
         viewHolder.imageView
             .loadImage(
-                hour.weather[0].icon,
+                hour.weather.safeGet(0)?.icon,
                 RequestOptions().centerInside()
             )
     }

@@ -106,10 +106,12 @@ class HomeFragment : Fragment() {
     }
 
     private fun loadResult(weather: Weather) {
-        this.view?.findViewById<ImageView>(R.id.weatherIcon)?.loadImage(weather.weather[0].icon)
+        this.view?.findViewById<ImageView>(R.id.weatherIcon)
+            ?.loadImage(weather.weather.safeGet(0)?.icon)
         this.view?.findViewById<TextView>(R.id.cityName)?.text = weather.name
-        this.view?.findViewById<TextView>(R.id.main)?.text = weather.weather[0].main
-        this.view?.findViewById<TextView>(R.id.description)?.text = weather.weather[0].description
+        this.view?.findViewById<TextView>(R.id.main)?.text = weather.weather.safeGet(0)?.main
+        this.view?.findViewById<TextView>(R.id.description)?.text =
+            weather.weather.safeGet(0)?.description
 
         this.view?.findViewById<TextView>(R.id.temp)?.text =
             getString(R.string.temperature, weather.main.temp)
