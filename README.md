@@ -1,5 +1,8 @@
 # WeatherApp
-A Demo app by Giacomo Panattoni (panagiac@protonmail.com)
+This is a simple application that shows the weather of a city. 
+It is also possible to view a forecast for the next 5 days.
+
+by Giacomo Panattoni (panagiac@protonmail.com)
 ### What's Inside
 - 100% Kotlin
 - Clean Architecture (with an extra layer to the cake!)
