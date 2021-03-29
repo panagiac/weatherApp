@@ -2,8 +2,8 @@ package com.panagiac.demo.data.network.service
 
 import com.panagiac.demo.data.FORECAST
 import com.panagiac.demo.data.WEATHER
-import com.panagiac.demo.data.models.ForecastDTO
-import com.panagiac.demo.data.models.WeatherDTO
+import com.panagiac.demo.data.models.dto.ForecastDTO
+import com.panagiac.demo.data.models.dto.WeatherDTO
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query

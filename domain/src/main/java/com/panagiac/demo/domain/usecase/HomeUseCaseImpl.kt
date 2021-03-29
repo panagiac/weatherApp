@@ -1,6 +1,6 @@
 package com.panagiac.demo.domain.usecase
 
-import com.panagiac.demo.domain.models.misc.City
+import com.panagiac.demo.domain.models.City
 import com.panagiac.demo.domain.models.Weather
 import com.panagiac.demo.domain.repository.CityRepository
 import com.panagiac.demo.domain.repository.ApiRepository

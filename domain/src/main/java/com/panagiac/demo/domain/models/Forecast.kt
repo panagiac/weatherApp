@@ -1,7 +1,6 @@
 package com.panagiac.demo.domain.models
 
 import android.os.Parcelable
-import com.panagiac.demo.domain.models.misc.Hour
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

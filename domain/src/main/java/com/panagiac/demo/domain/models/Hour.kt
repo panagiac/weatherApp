@@ -1,4 +1,4 @@
-package com.panagiac.demo.domain.models.misc
+package com.panagiac.demo.domain.models
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

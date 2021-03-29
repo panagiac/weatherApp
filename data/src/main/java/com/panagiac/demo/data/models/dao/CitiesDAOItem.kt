@@ -1,6 +1,4 @@
-package com.panagiac.demo.data.models
-
-class CitiesDAO : ArrayList<CitiesDAOItem>()
+package com.panagiac.demo.data.models.dao
 
 data class CitiesDAOItem(
     val country: String,

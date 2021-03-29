@@ -1,8 +1,8 @@
 package com.panagiac.demo.data
 
 import com.panagiac.demo.data.mappers.ForecastMapper
+import com.panagiac.demo.data.mappers.HourMapper
 import com.panagiac.demo.data.mappers.WeatherMapper
-import com.panagiac.demo.data.mappers.misc.*
 import com.panagiac.demo.data.network.service.MockApi
 import com.panagiac.demo.data.network.service.OpenWeatherApi
 import com.panagiac.demo.data.repository.ApiRepositoryImpl

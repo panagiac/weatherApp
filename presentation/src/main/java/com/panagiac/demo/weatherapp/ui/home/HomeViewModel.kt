@@ -2,8 +2,8 @@ package com.panagiac.demo.weatherapp.ui.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.panagiac.demo.domain.models.Response
-import com.panagiac.demo.domain.models.Response.Companion.Status
+import com.panagiac.demo.domain.Response
+import com.panagiac.demo.domain.Response.Companion.Status
 import com.panagiac.demo.domain.models.Weather
 import com.panagiac.demo.domain.usecase.HomeUseCase
 import com.panagiac.demo.weatherapp.base.BaseViewModel

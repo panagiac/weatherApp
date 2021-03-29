@@ -3,8 +3,8 @@ package com.panagiac.demo.weatherapp.ui.detail
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.panagiac.demo.domain.models.Forecast
-import com.panagiac.demo.domain.models.Response
-import com.panagiac.demo.domain.models.Response.Companion.Status
+import com.panagiac.demo.domain.Response
+import com.panagiac.demo.domain.Response.Companion.Status
 import com.panagiac.demo.domain.usecase.DetailUseCase
 import com.panagiac.demo.weatherapp.base.BaseViewModel
 import com.panagiac.demo.weatherapp.extensions.set

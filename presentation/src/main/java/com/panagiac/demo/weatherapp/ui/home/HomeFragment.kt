@@ -8,7 +8,7 @@ import android.widget.AutoCompleteTextView
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.panagiac.demo.domain.models.Response.Companion.Status
+import com.panagiac.demo.domain.Response.Companion.Status
 import com.panagiac.demo.domain.models.Weather
 import com.panagiac.demo.weatherapp.R
 import com.panagiac.demo.weatherapp.extensions.*
@@ -110,7 +110,6 @@ class HomeFragment : Fragment() {
         this.view?.findViewById<TextView>(R.id.cityName)?.text = weather.name
         this.view?.findViewById<TextView>(R.id.main)?.text = weather.main
         this.view?.findViewById<TextView>(R.id.description)?.text = weather.description
-
         this.view?.findViewById<TextView>(R.id.temp)?.text =
             getString(R.string.temperature, weather.temp)
         this.view?.findViewById<TextView>(R.id.tempMin)?.text =

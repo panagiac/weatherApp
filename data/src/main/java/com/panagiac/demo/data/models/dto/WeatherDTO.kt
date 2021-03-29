@@ -1,6 +1,4 @@
-package com.panagiac.demo.data.models
-
-import com.panagiac.demo.data.models.misc.*
+package com.panagiac.demo.data.models.dto
 
 data class WeatherDTO(
     val base: String?,

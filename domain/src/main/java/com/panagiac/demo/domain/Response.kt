@@ -1,4 +1,4 @@
-package com.panagiac.demo.domain.models
+package com.panagiac.demo.domain
 
 data class Response<T>(
     var responseStatus: Status? = null,

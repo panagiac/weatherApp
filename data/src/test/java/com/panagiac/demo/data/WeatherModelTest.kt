@@ -1,6 +1,6 @@
 package com.panagiac.demo.data
 
-import com.panagiac.demo.data.models.WeatherDTO
+import com.panagiac.demo.data.models.dto.WeatherDTO
 import com.panagiac.demo.data.tools.ResourceHelper
 import org.junit.Before
 import org.junit.Test

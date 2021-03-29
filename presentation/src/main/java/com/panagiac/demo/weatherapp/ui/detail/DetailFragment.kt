@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.panagiac.demo.domain.models.Response.Companion.Status
+import com.panagiac.demo.domain.Response.Companion.Status
 import com.panagiac.demo.domain.models.Weather
 import com.panagiac.demo.weatherapp.R
 import com.panagiac.demo.weatherapp.extensions.hide

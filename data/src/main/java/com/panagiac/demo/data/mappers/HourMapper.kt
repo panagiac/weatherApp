@@ -1,11 +1,11 @@
-package com.panagiac.demo.data.mappers.misc
+package com.panagiac.demo.data.mappers
 
 import com.panagiac.demo.data.extensions.toCelsius
 import com.panagiac.demo.data.extensions.toDate
 import com.panagiac.demo.data.extensions.toReadableDate
-import com.panagiac.demo.data.mappers.BaseMapper
-import com.panagiac.demo.data.models.misc.HourDTO
-import com.panagiac.demo.domain.models.misc.Hour
+import com.panagiac.demo.data.models.dto.HourDTO
+import com.panagiac.demo.domain.BaseMapper
+import com.panagiac.demo.domain.models.Hour
 
 class HourMapper : BaseMapper<HourDTO, Hour> {
     override fun mapFrom(from: HourDTO): Hour {

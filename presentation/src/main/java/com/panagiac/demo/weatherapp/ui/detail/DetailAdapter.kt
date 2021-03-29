@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.request.RequestOptions
 import com.panagiac.demo.domain.models.Forecast
-import com.panagiac.demo.domain.models.misc.Hour
+import com.panagiac.demo.domain.models.Hour
 import com.panagiac.demo.weatherapp.R
 import com.panagiac.demo.weatherapp.extensions.loadImage
 import org.koin.core.KoinComponent

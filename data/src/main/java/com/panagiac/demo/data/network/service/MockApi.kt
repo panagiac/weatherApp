@@ -2,8 +2,8 @@ package com.panagiac.demo.data.network.service
 
 import com.panagiac.demo.data.FORECAST_API_MOCK
 import com.panagiac.demo.data.WEATHER_API_MOCK
-import com.panagiac.demo.data.models.ForecastDTO
-import com.panagiac.demo.data.models.WeatherDTO
+import com.panagiac.demo.data.models.dto.ForecastDTO
+import com.panagiac.demo.data.models.dto.WeatherDTO
 import com.panagiac.demo.data.tools.ResourceHelper
 import io.reactivex.Single
 

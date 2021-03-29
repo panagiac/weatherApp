@@ -1,10 +1,9 @@
 package com.panagiac.demo.data.mappers
 
 import com.panagiac.demo.data.extensions.toCelsius
-import com.panagiac.demo.data.mappers.misc.*
-import com.panagiac.demo.data.models.WeatherDTO
+import com.panagiac.demo.data.models.dto.WeatherDTO
+import com.panagiac.demo.domain.BaseMapper
 import com.panagiac.demo.domain.models.Weather
-import com.panagiac.demo.domain.models.misc.*
 
 class WeatherMapper : BaseMapper<WeatherDTO, Weather> {
     override fun mapFrom(from: WeatherDTO): Weather {

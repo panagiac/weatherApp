@@ -1,7 +1,7 @@
 package com.panagiac.demo.data.mappers
 
-import com.panagiac.demo.data.mappers.misc.HourMapper
-import com.panagiac.demo.data.models.ForecastDTO
+import com.panagiac.demo.data.models.dto.ForecastDTO
+import com.panagiac.demo.domain.BaseMapper
 import com.panagiac.demo.domain.models.Forecast
 
 class ForecastMapper(private val hourMapper: HourMapper) : BaseMapper<ForecastDTO, Forecast> {
