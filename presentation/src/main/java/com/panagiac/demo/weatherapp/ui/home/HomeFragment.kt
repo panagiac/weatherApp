@@ -44,16 +44,16 @@ class HomeFragment : Fragment() {
                 activity?.navigate(DetailFragment.newInstance(it))
             }
         }
-        resultLoadingView = view.findViewById(R.id.resultLoading)
 
+        resultLoadingView = view.findViewById(R.id.resultLoading)
         autoCompleteView = view.findViewById(R.id.autoComplete)
         autoCompleteLoadingView = view.findViewById(R.id.autoCompleteLoading)
 
         return view
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         viewModel.getCities().observe(viewLifecycleOwner, { it ->
             when (it.responseStatus) {
@@ -121,12 +121,5 @@ class HomeFragment : Fragment() {
             getString(R.string.tempMax, weather.main.tempMax)
 
         resultView.show()
-    }
-
-    override fun onPause() {
-        super.onPause()
-
-        viewModel.getCities().removeObservers(viewLifecycleOwner)
-        viewModel.getWeather().removeObservers(viewLifecycleOwner)
     }
 }

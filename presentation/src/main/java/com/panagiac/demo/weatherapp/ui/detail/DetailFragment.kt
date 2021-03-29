@@ -64,8 +64,8 @@ class DetailFragment : Fragment() {
         return layout
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         viewModel.getForecast().observe(viewLifecycleOwner, {
             when (it.responseStatus) {
@@ -83,11 +83,5 @@ class DetailFragment : Fragment() {
                 }
             }
         })
-    }
-
-    override fun onPause() {
-        super.onPause()
-
-        viewModel.getForecast().removeObservers(viewLifecycleOwner)
     }
 }
