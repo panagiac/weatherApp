@@ -24,10 +24,7 @@ class RepositoryTest {
             apiService = mockApi,
             weatherMapper = WeatherMapper(),
             forecastMapper = ForecastMapper(
-                HourMapper(
-                    mainMapper = MainMapper(),
-                    weatherItemMapper = WeatherItemMapper()
-                )
+                HourMapper()
             )
         )
     }

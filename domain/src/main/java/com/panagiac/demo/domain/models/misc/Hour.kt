@@ -5,10 +5,8 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Hour(
+    val temp: Int,
     val dt: Int,
     val dtText: String,
-    val main: Main,
-    val pop: Double,
-    val visibility: Int,
-    val weather: List<WeatherItem>
+    val icon: String
 ) : Parcelable

@@ -12,7 +12,6 @@ import com.panagiac.demo.domain.models.Forecast
 import com.panagiac.demo.domain.models.misc.Hour
 import com.panagiac.demo.weatherapp.R
 import com.panagiac.demo.weatherapp.extensions.loadImage
-import com.panagiac.demo.weatherapp.extensions.safeGet
 import org.koin.core.KoinComponent
 import org.koin.core.get
 
@@ -43,11 +42,11 @@ class DetailAdapter : RecyclerView.Adapter<DetailAdapter.ViewHolder>(), KoinComp
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val hour = hourList[position]
 
-        viewHolder.temp.text = context.getString(R.string.temperature, hour.main.temp)
+        viewHolder.temp.text = context.getString(R.string.temperature, hour.temp)
         viewHolder.date.text = hour.dtText
         viewHolder.imageView
             .loadImage(
-                hour.weather.safeGet(0)?.icon,
+                hour.icon,
                 RequestOptions().centerInside()
             )
     }

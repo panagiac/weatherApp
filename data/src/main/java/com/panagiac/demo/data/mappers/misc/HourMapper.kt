@@ -1,34 +1,20 @@
 package com.panagiac.demo.data.mappers.misc
 
+import com.panagiac.demo.data.extensions.toCelsius
 import com.panagiac.demo.data.extensions.toDate
 import com.panagiac.demo.data.extensions.toReadableDate
 import com.panagiac.demo.data.mappers.BaseMapper
 import com.panagiac.demo.data.models.misc.HourDTO
 import com.panagiac.demo.domain.models.misc.Hour
-import com.panagiac.demo.domain.models.misc.Main
 
-class HourMapper(
-    private val mainMapper: MainMapper,
-    private val weatherItemMapper: WeatherItemMapper
-) : BaseMapper<HourDTO, Hour> {
+class HourMapper : BaseMapper<HourDTO, Hour> {
     override fun mapFrom(from: HourDTO): Hour {
         return Hour(
+            temp = from.main?.temp?.toCelsius()?.toInt() ?: 0,
             dt = from.dt ?: 0,
             dtText = from.dt_txt?.toDate()?.toReadableDate() ?: "",
-            main = from.main?.let { mainMapper.mapFrom(it) } ?: Main(
-                0.0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0
-            ),
-            pop = from.pop ?: 0.0,
-            visibility = from.visibility ?: 0,
-            weather = from.weather?.let { weatherItemMapper.mapFrom(it) } ?: listOf()
+            icon = from.weather?.get(0)?.icon
+                ?.let { "https://openweathermap.org/img/wn/$it@2x.png" } ?: ""
         )
     }
 

@@ -9,17 +9,13 @@ val mappersModule = module {
     factory { CloudsMapper() }
     factory { CoordsMapper() }
     factory { ForecastMapper(hourMapper = get()) }
-    factory {
-        HourMapper(
-            mainMapper = get(),
-            weatherItemMapper = get()
-        )
-    }
     factory { MainMapper() }
     factory { SysMapper() }
     factory { WeatherItemMapper() }
-    factory {
-        WeatherMapper()
-    }
+
+
     factory { WindMapper() }
+
+    factory { WeatherMapper() }
+    factory { HourMapper() }
 }
