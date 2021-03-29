@@ -1,21 +1,15 @@
 package com.panagiac.demo.domain.models
 
 import android.os.Parcelable
-import com.panagiac.demo.domain.models.misc.*
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Weather(
-    val base: String,
-    val clouds: Clouds,
-    val cod: Int,
-    val coord: Coord,
-    val dt: Int,
-    val id: Int,
-    val main: Main,
+    val icon: String,
     val name: String,
-    val sys: Sys,
-    val visibility: Int,
-    val weather: List<WeatherItem>,
-    val wind: Wind
+    val main: String,
+    val description: String,
+    val temp: Int,
+    val tempMin: Int,
+    val tempMax: Int
 ): Parcelable

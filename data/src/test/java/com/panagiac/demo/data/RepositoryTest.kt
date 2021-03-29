@@ -22,14 +22,7 @@ class RepositoryTest {
     fun prepare() {
         repository = ApiRepositoryImpl(
             apiService = mockApi,
-            weatherMapper = WeatherMapper(
-                cloudsMapper = CloudsMapper(),
-                windMapper = WindMapper(),
-                weatherItemMapper = WeatherItemMapper(),
-                sysMapper = SysMapper(),
-                mainMapper = MainMapper(),
-                coordsMapper = CoordsMapper()
-            ),
+            weatherMapper = WeatherMapper(),
             forecastMapper = ForecastMapper(
                 HourMapper(
                     mainMapper = MainMapper(),
