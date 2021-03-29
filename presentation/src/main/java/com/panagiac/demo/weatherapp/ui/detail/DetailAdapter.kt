@@ -2,7 +2,6 @@ package com.panagiac.demo.weatherapp.ui.detail
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
@@ -11,19 +10,20 @@ import com.bumptech.glide.request.RequestOptions
 import com.panagiac.demo.domain.models.Forecast
 import com.panagiac.demo.domain.models.Hour
 import com.panagiac.demo.weatherapp.R
+import com.panagiac.demo.weatherapp.databinding.ItemDetailBinding
 import com.panagiac.demo.weatherapp.extensions.loadImage
 import org.koin.core.KoinComponent
-import org.koin.core.get
+import org.koin.core.inject
 
 class DetailAdapter : RecyclerView.Adapter<DetailAdapter.ViewHolder>(), KoinComponent {
+    private val context: Context by inject()
 
     private val hourList: MutableList<Hour> = mutableListOf()
-    private val context: Context = get()
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val temp: TextView = view.findViewById(R.id.temp)
-        val date: TextView = view.findViewById(R.id.date)
-        val imageView: ImageView = view.findViewById(R.id.weatherIcon)
+    class ViewHolder(binding: ItemDetailBinding) : RecyclerView.ViewHolder(binding.root) {
+        val temp: TextView = binding.temp
+        val date: TextView = binding.date
+        val imageView: ImageView = binding.weatherIcon
     }
 
     override fun getItemId(position: Int): Long {
@@ -31,12 +31,13 @@ class DetailAdapter : RecyclerView.Adapter<DetailAdapter.ViewHolder>(), KoinComp
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val view =
-            LayoutInflater
-                .from(viewGroup.context)
-                .inflate(R.layout.item_detail, viewGroup, false)
+        val binding = ItemDetailBinding.inflate(
+            LayoutInflater.from(viewGroup.context),
+            viewGroup,
+            false
+        )
 
-        return ViewHolder(view)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {

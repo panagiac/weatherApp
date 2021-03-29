@@ -4,13 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AutoCompleteTextView
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.panagiac.demo.domain.Response.Companion.Status
-import com.panagiac.demo.domain.models.Weather
 import com.panagiac.demo.weatherapp.R
+import com.panagiac.demo.weatherapp.databinding.FragmentHomeBinding
 import com.panagiac.demo.weatherapp.extensions.*
 import com.panagiac.demo.weatherapp.ui.detail.DetailFragment
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -26,30 +23,21 @@ class HomeFragment : Fragment() {
 
     private val viewModel: HomeViewModel by viewModel()
 
-    private lateinit var resultView: View
-    private lateinit var resultLoadingView: View
-
-    private lateinit var autoCompleteView: AutoCompleteTextView
-    private lateinit var autoCompleteLoadingView: View
+    private lateinit var binding: FragmentHomeBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
+    ): View {
+        binding = FragmentHomeBinding.inflate(layoutInflater)
 
-        resultView = view.findViewById(R.id.result)
-        resultView.setOnClickListener {
+        binding.result.root.setOnClickListener {
             viewModel.selectedWeather?.let {
                 activity?.navigate(DetailFragment.newInstance(it))
             }
         }
 
-        resultLoadingView = view.findViewById(R.id.resultLoading)
-        autoCompleteView = view.findViewById(R.id.autoComplete)
-        autoCompleteLoadingView = view.findViewById(R.id.autoCompleteLoading)
-
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -59,22 +47,22 @@ class HomeFragment : Fragment() {
             when (it.responseStatus) {
                 Status.SUCCESSFUL -> {
                     it.data?.let { cityList ->
-                        autoCompleteView.build(cityList) {
+                        binding.autoComplete.build(cityList) {
                             viewModel.weather(it)
                         }
-                        autoCompleteLoadingView.hide()
-                        resultLoadingView.hide()
+                        binding.autoCompleteLoading.hide()
+                        binding.resultLoading.hide()
                     }
                 }
                 Status.ERROR -> {
                     it.errorMessage?.let { message -> activity?.toast(message) }
 
-                    autoCompleteLoadingView.show()
-                    resultLoadingView.hide()
+                    binding.autoCompleteLoading.show()
+                    binding.resultLoading.hide()
                 }
                 Status.LOADING -> {
-                    autoCompleteLoadingView.show()
-                    resultLoadingView.show()
+                    binding.autoCompleteLoading.show()
+                    binding.resultLoading.show()
                 }
             }
         })
@@ -83,40 +71,32 @@ class HomeFragment : Fragment() {
             when (it.responseStatus) {
                 Status.SUCCESSFUL -> {
                     it.data?.let { weather ->
-                        loadResult(weather)
+                        binding.result.weatherIcon.loadImage(weather.icon)
+                        binding.result.cityName.text = weather.name
+                        binding.result.main.text = weather.main
+                        binding.result.description.text = weather.description
+                        binding.result.temp.text = getString(R.string.temperature, weather.temp)
+                        binding.result.tempMin.text = getString(R.string.tempMin, weather.tempMin)
+                        binding.result.tempMax.text = getString(R.string.tempMax, weather.tempMax)
 
-                        resultLoadingView.hide()
-                        autoCompleteLoadingView.hide()
+                        binding.result.root.show()
+                        binding.resultLoading.hide()
+                        binding.autoCompleteLoading.hide()
                     }
                 }
                 Status.ERROR -> {
                     it.errorMessage?.let { message -> activity?.toast(message) }
 
-                    resultView.hide()
-                    resultLoadingView.hide()
-                    autoCompleteLoadingView.hide()
+                    binding.result.root.hide()
+                    binding.resultLoading.hide()
+                    binding.autoCompleteLoading.hide()
                 }
                 Status.LOADING -> {
-                    resultView.hide()
-                    resultLoadingView.show()
-                    autoCompleteLoadingView.show()
+                    binding.result.root.hide()
+                    binding.resultLoading.show()
+                    binding.autoCompleteLoading.show()
                 }
             }
         })
-    }
-
-    private fun loadResult(weather: Weather) {
-        this.view?.findViewById<ImageView>(R.id.weatherIcon)?.loadImage(weather.icon)
-        this.view?.findViewById<TextView>(R.id.cityName)?.text = weather.name
-        this.view?.findViewById<TextView>(R.id.main)?.text = weather.main
-        this.view?.findViewById<TextView>(R.id.description)?.text = weather.description
-        this.view?.findViewById<TextView>(R.id.temp)?.text =
-            getString(R.string.temperature, weather.temp)
-        this.view?.findViewById<TextView>(R.id.tempMin)?.text =
-            getString(R.string.tempMin, weather.tempMin)
-        this.view?.findViewById<TextView>(R.id.tempMax)?.text =
-            getString(R.string.tempMax, weather.tempMax)
-
-        resultView.show()
     }
 }
