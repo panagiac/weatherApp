@@ -40,12 +40,12 @@ class RepositoryTest {
     }
 
     @Test
-    fun getForecast() {
+    fun assert_isForecastNotEmpty() {
         assert(repository.getForecast("q").blockingGet().list.count() > 0)
     }
 
     @Test
-    fun getWeather() {
+    fun assert_weatherCityNameEqualsLondon() {
         assert(repository.getWeather("q").blockingGet().name == CITY)
     }
 }

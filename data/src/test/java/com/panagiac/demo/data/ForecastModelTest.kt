@@ -16,7 +16,7 @@ class ForecastModelTest {
     }
 
     @Test
-    fun isSizeCorrect() {
+    fun assert_isNotEmpty() {
         forecastDTO.list?.isNotEmpty()?.let { assert(it) }
     }
 }

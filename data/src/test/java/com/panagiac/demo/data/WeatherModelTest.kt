@@ -20,7 +20,7 @@ class WeatherModelTest {
     }
 
     @Test
-    fun isOk() {
+    fun assert_cityNameEqualsLondon() {
         assert(weatherDTO?.name == CITY)
     }
 }

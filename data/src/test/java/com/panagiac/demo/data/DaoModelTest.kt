@@ -16,7 +16,7 @@ class DaoModelTest {
     }
 
     @Test
-    fun isPopulated() {
+    fun assert_isNotEmpty() {
         assert(cities.isNotEmpty())
     }
 }
